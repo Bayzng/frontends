@@ -76,7 +76,7 @@ const OrderConfirm = () => {
                                     </div>
                                     <div className="artTag">
                                         <div>
-                                            <h2>{art.price}</h2>
+                                            <h2>${art.price}</h2>
                                         </div>
                                         {artStatus[art._id] === 'processing' && (
                                             <button className="artTag-btn" onClick={() => handleConfirmPayment(art._id)}>

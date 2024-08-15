@@ -4,13 +4,15 @@ import './OrderCreation.css';
 import { addArt, getAllArts } from '../../utils/db';
 import { Link } from 'react-router-dom';
 import { ArtStatusContext } from '../../context/ArtStatusContext';
-import { TransactionContext } from '../../contest/TransactionContext'; 
+// import { TransactionContext } from '../../context/TransactionContext'; 
+import { TransactionContext } from '../../contest/TransactionContext';
 import { ethers } from 'ethers';
 
 const OrderCreation = () => {
   const { purchaseArt } = useContext(TransactionContext);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isInsufficientFundsModalOpen, setIsInsufficientFundsModalOpen] = useState(false); // New state for insufficient funds modal
   const [isWalletConnected, setIsWalletConnected] = useState(false); 
   const [formData, setFormData] = useState({
     image: '',
@@ -68,6 +70,10 @@ const OrderCreation = () => {
     setIsModalOpen(false);
   };
 
+  const closeInsufficientFundsModal = () => {
+    setIsInsufficientFundsModalOpen(false);
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -109,10 +115,20 @@ const OrderCreation = () => {
       await window.ethereum.request({ method: 'eth_requestAccounts' });
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
+
+      const balance = await provider.getBalance(await signer.getAddress());
+
+      if (balance.lt(ethers.utils.parseEther(price.toString()))) {
+        setIsInsufficientFundsModalOpen(true);
+        setArtStatus((prevStatus) => ({ ...prevStatus, [id]: 'unsold' }));
+        return;
+      }
+
       const tx = await signer.sendTransaction({
         to: '0x1853E7DE95130a304e4dF355CF8aB7AE80160189', 
         value: ethers.utils.parseEther(price.toString())
       });
+
       await tx.wait();
       setArtStatus((prevStatus) => ({ ...prevStatus, [id]: 'bought' }));
     } catch (error) {
@@ -168,7 +184,7 @@ const OrderCreation = () => {
                   </div>
                   <div className="artTag">
                     <div>
-                      <h2>{art.price} LSK</h2>
+                      <h2>${art.price}</h2>
                     </div>
                     <button 
                       className="artTag-btn" 
@@ -179,7 +195,7 @@ const OrderCreation = () => {
                         ? 'Processing' 
                         : artStatus[art._id] === 'bought' 
                         ? 'Art Purchased' 
-                        : `Buy Art for ${art.price}`}
+                        : `Buy Art for $${art.price}`}
                     </button>
                   </div>
                 </div>
@@ -219,6 +235,17 @@ const OrderCreation = () => {
                   </label>
                   <button type="submit">Submit</button>
                 </form>
+              </div>
+            </div>
+          )}
+
+          {isInsufficientFundsModalOpen && (
+            <div className="modal">
+              <div className="modal-content">
+                <span className="close" onClick={closeInsufficientFundsModal}>&times;</span>
+                <h2>Insufficient Funds</h2>
+                <p>You don't have enough funds in your wallet to buy this art.</p>
+                <button onClick={closeInsufficientFundsModal}>Close</button>
               </div>
             </div>
           )}
