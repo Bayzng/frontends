@@ -1,0 +1,76 @@
+@media screen and (min-width: 350px) {
+    .Trending-main {
+        margin-top: 5rem;
+        /* padding: 0 12rem 8rem; */
+    }
+    
+
+    .section {
+        padding: 10px;
+    }
+
+    .Trending {
+        
+    }
+    
+    .Trending-Section {
+        gap: 5rem;
+    }
+    
+    .Trending img {
+        width: 20rem;
+        height: 20rem;
+        border-radius: 10px;
+        
+    }
+    
+    .Trending-flex {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .Trending-flex img {
+        width: 6rem;
+        height: 5.5rem;
+        border-radius: 10px;
+    }
+}
+
+@media screen and (min-width: 1030px) {
+    .Trending-main {
+        margin-top: 5rem;
+        padding: 0 12rem 8rem;
+    }
+    
+    .Trending {
+    
+    }
+    
+    .Trending-Section {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .Trending img {
+        width: 20.5rem;
+        margin-bottom: 20px;
+        height: 20rem;
+        border-radius: 10px;
+    }
+
+    hr {
+        margin-top: 2rem;
+    }
+    
+    .Trending-flex {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .Trending-flex img {
+        width: 6rem;
+        height: 5.5rem;
+        border-radius: 10px;
+    }
+}
+

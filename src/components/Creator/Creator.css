@@ -1,0 +1,92 @@
+/* Creator.css */
+
+.creatorSection {
+    padding: 20px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    margin: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.creatorSection h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.sub-creatorSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sub-creatorSection h3 {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.sub-creatorSection button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sub-creatorSection button:hover {
+    background-color: #0056b3;
+}
+
+.creatorSectionDetails {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.creatorSectionDetail {
+    flex: 1;
+    min-width: 200px;
+    background-color: black;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.creatorSectionDetail:hover {
+    transform: scale(1.05);
+}
+
+.sub-creatorSectionDetails {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.secDetails {
+    display: flex;
+    align-items: center;
+}
+
+.secDetails img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.secDetails p {
+    font-size: 1rem;
+    color: white;
+    margin: 0;
+}
+
+p.error {
+    color: red;
+    font-weight: bold;
+}

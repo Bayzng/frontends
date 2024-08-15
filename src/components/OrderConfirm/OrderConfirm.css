@@ -1,0 +1,80 @@
+.artTag-btn-success {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: not-allowed;
+}
+
+.artSection-one {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.future {
+    padding: 0 10rem 3rem;
+}
+
+.seller-confirm {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.future img {
+    width: 70rem;
+    border-radius: 2rem;
+    border: 1px solid yellow;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 1200px) {
+    .future {
+        padding: 0 5rem 3rem;
+    }
+
+    .future img {
+        width: 50rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .future {
+        padding: 0 3rem 2rem;
+    }
+
+    .future img {
+        width: 40rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .future {
+        padding: 0 2rem 1rem;
+    }
+
+    .future img {
+        width: 30rem;
+    }
+
+    .seller-confirm {
+        margin-bottom: 3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .future {
+        padding: 0 1rem 0.5rem;
+    }
+
+    .future img {
+        width: 20rem;
+    }
+
+    .seller-confirm {
+        margin-bottom: 2rem;
+    }
+
+    .artTag-btn-success {
+        padding: 8px 16px;
+    }
+}
