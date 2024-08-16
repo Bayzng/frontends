@@ -1,6 +1,5 @@
 import React from 'react';
 import './MetamaskModal.css';
-// import metamaskLogo from '../../assets/metamaskLogo.png';
 
 const MetamaskModal = ({ showModal, setShowModal }) => {
   if (!showModal) return null;
